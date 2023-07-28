@@ -1,3 +1,6 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 const heading = React.createElement(
   "h4",
   { id: "heading" },
@@ -5,10 +8,10 @@ const heading = React.createElement(
 );
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 console.log(root);
-root.render(heading);
+//root.render(heading);
 
 const heading1 = React.createElement("h1", {}, "Yo");
-const heading2 = React.createElement("h2", {}, "Parth");
+const heading2 = React.createElement("h2", {}, "Parth1234");
 
 const children = React.createElement("div", { id: "child" }, [
   heading1,
@@ -17,4 +20,4 @@ const children = React.createElement("div", { id: "child" }, [
 
 const parent = React.createElement("div", { id: "parent" }, children);
 //console.log(parent);
-//root.render(parent);
+root.render(parent);
