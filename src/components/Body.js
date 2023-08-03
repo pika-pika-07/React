@@ -1,12 +1,16 @@
+import { useState } from "react";
 import { SampleData } from "../utils/sampleData";
 import RestrauntCard from "./RestrauntCard";
+
 const Body = () => {
+  const [restraunts, setRestraunts] = useState(SampleData);
   return (
     <div className="body">
       <div className="filter">
         <button
           onClick={() => {
-            console.log("clicked");
+            const filteredList = SampleData.filter((res) => res.avgRating > 4);
+            setRestraunts(filteredList);
           }}
           className="filter-btn"
         >
@@ -14,7 +18,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {SampleData.map((data) => {
+        {restraunts.map((data) => {
           return (
             <RestrauntCard
               key={data.id}
