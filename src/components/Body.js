@@ -3,12 +3,21 @@ import RestrauntCard from "./RestrauntCard";
 const Body = () => {
   return (
     <div className="body">
-      <div className="search">Search</div>
+      <div className="filter">
+        <button
+          onClick={() => {
+            console.log("clicked");
+          }}
+          className="filter-btn"
+        >
+          Top Rated Restraunts
+        </button>
+      </div>
       <div className="res-container">
         {SampleData.map((data) => {
           return (
             <RestrauntCard
-              key={data.info.id}
+              key={data.id}
               resData={data}
               resName="Macdonalds"
               cuisine="Mexican, Asian"

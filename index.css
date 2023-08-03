@@ -46,3 +46,7 @@
 .cuisine {
   overflow: hidden;
 }
+.filter-btn {
+  margin-top: 5px;
+  cursor: pointer;
+}
