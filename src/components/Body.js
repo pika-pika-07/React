@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-
 import RestrauntCard from "./RestrauntCard";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [restraunts, setRestraunts] = useState([]);
@@ -18,6 +18,10 @@ const Body = () => {
     const resInfo = res.map((res) => res.info);
     setRestraunts(resInfo);
   };
+
+  if (restraunts.length == 0) {
+    return <Shimmer />;
+  }
   return (
     <div className="body">
       <div className="filter">
