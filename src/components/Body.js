@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import RestrauntCard from "./RestrauntCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restraunts, setRestraunts] = useState([]);
@@ -62,7 +63,12 @@ const Body = () => {
 
       <div className="res-container">
         {filteredRestraunts.map((data) => {
-          return <RestrauntCard key={data.id} resData={data} />;
+          return (
+            <Link to={`/restraunts/${data.id}`} key={data.id}>
+              {" "}
+              <RestrauntCard resData={data} />
+            </Link>
+          );
         })}
       </div>
     </div>

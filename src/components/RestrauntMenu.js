@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-
+import { useParams } from "react-router-dom";
+import { MENU_API_URL } from "../utils/constants";
 const RestrauntMenu = () => {
   const [restrauntData, setrestrauntData] = useState(null);
+  const { resId } = useParams();
 
   useEffect(() => {
     fetchMenu();
   }, []);
 
   const fetchMenu = async () => {
-    const url =
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=30.7333148&lng=76.7794179&restaurantId=41298&catalog_qa=undefined&submitAction=ENTER";
+    const url = `${MENU_API_URL}${resId}`;
     const data = await fetch(url);
     const json = await data.json();
 
@@ -36,14 +37,14 @@ const RestrauntMenu = () => {
       <h3> {costForTwoMessage}</h3>
       <h3> Cuisines </h3>
       <ul>
-        {cuisines.map((cuisine) => {
-          return <li>{cuisine}</li>;
+        {cuisines.map((cuisine, index) => {
+          return <li key={index}>{cuisine}</li>;
         })}
       </ul>
       <h3> Menu </h3>
       <ul>
         {itemCards.map((card) => {
-          return <li>{card?.card?.info?.name}</li>;
+          return <li key={card?.card?.info?.id}>{card?.card?.info?.name}</li>;
         })}
       </ul>
     </div>
