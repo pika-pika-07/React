@@ -6,6 +6,8 @@ const Body = () => {
   const [restraunts, setRestraunts] = useState([]);
   const [filteredRestraunts, setFilteredRestraunts] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  // Whenever state varibles change, react triggers a reconciliation cycle(re-renders the component)
   useEffect(() => {
     fetchData();
   }, []);
@@ -16,7 +18,7 @@ const Body = () => {
     );
     const json = await data.json();
     const res =
-      json.data.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      json.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     const resInfo = res.map((res) => res.info);
     setRestraunts(resInfo);
     setFilteredRestraunts(resInfo);
@@ -24,7 +26,7 @@ const Body = () => {
 
   const filterCards = () => {
     const filtered = restraunts.filter((restraunt) =>
-      restraunt.name.toLowerCase().includes(searchText)
+      restraunt.name.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredRestraunts(filtered);
   };
