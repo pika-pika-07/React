@@ -67,3 +67,7 @@
 .filter {
   display: flex;
 }
+.user-card {
+  border: 1px solid red;
+  padding: 10px;
+}
