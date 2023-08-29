@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { MENU_API_URL } from "../utils/constants";
 
 const RestrauntMenu = () => {
   const { resId } = useParams();
