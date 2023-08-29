@@ -5,8 +5,8 @@ const About = () => {
   return (
     <div>
       About Component
-      <User name="Parthoo" />
-      <UserClass name="Parthoo" />
+      {/* <User name="Parthoo" /> */}
+      <UserClass name="Parthoo" location="Nahans" />
     </div>
   );
 };
