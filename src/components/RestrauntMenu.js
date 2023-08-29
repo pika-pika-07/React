@@ -2,22 +2,11 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API_URL } from "../utils/constants";
+
 const RestrauntMenu = () => {
-  const [restrauntData, setrestrauntData] = useState(null);
   const { resId } = useParams();
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const url = `${MENU_API_URL}${resId}`;
-    const data = await fetch(url);
-    const json = await data.json();
-
-    const refractoredData = json?.data;
-    setrestrauntData(refractoredData);
-  };
+  const restrauntData = useRestaruntMenu(resId);
 
   if (restrauntData === null) {
     return <Shimmer />;
