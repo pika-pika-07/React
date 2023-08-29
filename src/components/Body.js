@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import RestrauntCard from "./RestrauntCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [restraunts, setRestraunts] = useState([]);
@@ -36,6 +37,11 @@ const Body = () => {
     setSearchText(e.target.value);
   };
 
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) {
+    return <h1>You are offline</h1>;
+  }
   return restraunts.length == 0 ? (
     <Shimmer />
   ) : (
