@@ -14,31 +14,33 @@ const Header = () => {
     }
   };
   return (
-    <div className="header">
+    <div className="flex justify-between border border-solid border-black items-center bg-pink-400 sm:bg-red-400 lg:bg-orange-400">
       <div className="logo">
-        <img src={LOGO_URL} />
+        <img className="w-20 h-20 mx-10" src={LOGO_URL} />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online Status: {onlineStatus ? "🧑‍🎤" : "🧶"}</li>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className="px-4">
+            Online Status: {onlineStatus ? "🧑‍🎤" : "🧶"}
+          </li>
+          <li className="px-4">
             {" "}
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-4">
             {" "}
             <Link to="/about">About us</Link>
           </li>
-          <li>
+          <li className="px-4">
             {" "}
             <Link to="/contact">Contact us</Link>
           </li>
-          <li>
+          <li className="px-4">
             {" "}
             <Link to="/grocery">Grocery</Link>
           </li>
           <li>Cart</li>
-          <button onClick={onBtnClick} className="login-btn">
+          <button className="px-4" onClick={onBtnClick}>
             {btnName}
           </button>
         </ul>

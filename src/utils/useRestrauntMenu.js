@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { MENU_API_URL } from "./constants";
 
 const useRestaruntMenu = (resId) => {

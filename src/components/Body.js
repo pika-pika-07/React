@@ -46,28 +46,36 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <button
-          onClick={() => {
-            const filteredList = SampleData.filter((res) => res.avgRating > 4);
-            setRestraunts(filteredList);
-          }}
-          className="filter-btn"
-        >
-          Top Rated Restraunts
-        </button>
-        <div className="search">
+      <div className="flex">
+        <div className="m-4 p-4 flex items-center">
+          <button
+            onClick={() => {
+              const filteredList = SampleData.filter(
+                (res) => res.avgRating > 4
+              );
+              setRestraunts(filteredList);
+            }}
+            className="my-5 px-4 py-2 bg-green-200 rounded-lg"
+          >
+            Top Rated Restraunts
+          </button>
+        </div>
+
+        <div className="m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black"
             value={searchText}
             onChange={onTextChange}
           />
-          <button onClick={filterCards}> search </button>
+          <button className="p-4 m-4" onClick={filterCards}>
+            {" "}
+            Search{" "}
+          </button>
         </div>
       </div>
 
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredRestraunts.map((data) => {
           return (
             <Link to={`/restraunts/${data.id}`} key={data.id}>
