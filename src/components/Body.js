@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import RestrauntCard from "./RestrauntCard";
+import RestrauntCard, { withPromotedLabel } from "./RestrauntCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -8,6 +8,8 @@ const Body = () => {
   const [restraunts, setRestraunts] = useState([]);
   const [filteredRestraunts, setFilteredRestraunts] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const RestrauntCardPromoted = withPromotedLabel(RestrauntCard);
 
   // Whenever state varibles change, react triggers a reconciliation cycle(re-renders the component)
   useEffect(() => {
@@ -79,8 +81,11 @@ const Body = () => {
         {filteredRestraunts.map((data) => {
           return (
             <Link to={`/restraunts/${data.id}`} key={data.id}>
-              {" "}
-              <RestrauntCard resData={data} />
+              {data.avgRating > 4.2 ? (
+                <RestrauntCardPromoted resData={data} />
+              ) : (
+                <RestrauntCard resData={data} />
+              )}
             </Link>
           );
         })}

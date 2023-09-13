@@ -1,4 +1,5 @@
 import { CDN_URL } from "../utils/constants";
+
 const RestrauntCard = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } = resData;
@@ -20,4 +21,23 @@ const RestrauntCard = (props) => {
     </div>
   );
 };
+
+// Higher Order Component
+// Input -> RestrauntCard , Output => RestrauntCardPromoted
+
+export const withPromotedLabel = (RestrauntCard) => {
+  // Returns a component
+  return (props) => {
+    return (
+      <div>
+        <label className="bg-black text-white m-2 p-2 rounded-lg absolute">
+          {" "}
+          Promoted{" "}
+        </label>
+        <RestrauntCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestrauntCard;
