@@ -9,6 +9,8 @@ const RestrauntMenu = () => {
 
   const restrauntData = useRestaurantMenu(resId);
 
+  const [showIndex, setShowIndex] = useState(null);
+
   if (restrauntData === null) {
     return <Shimmer />;
   }
@@ -23,18 +25,14 @@ const RestrauntMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
-  console.log(categories);
+  console.log(cuisines);
   return (
     <div className="text-center">
       <h1 className="font-bold m-6 text-2xl"> {name}</h1>
 
       <h3> {costForTwoMessage}</h3>
       <h3> Cuisines </h3>
-      <ul className="font-bold ">
-        {cuisines.map((cuisine, index) => {
-          return <li key={index}>{cuisine}</li>;
-        })}
-      </ul>
+      <ul className="font-bold ">{cuisines}</ul>
       <h3> Menu </h3>
       <ul>
         {categories.map((card, index) => {
@@ -42,10 +40,16 @@ const RestrauntMenu = () => {
             <RestrauntCategory
               key={card?.card?.title}
               data={card?.card?.card}
+              showItems={index === showIndex ? true : false}
+              setShowIndex={() => {
+                if (index === showIndex) {
+                  setShowIndex(null);
+                } else {
+                  setShowIndex(index);
+                }
+              }}
             />
           );
-
-          // return <li key={index}>{card?.title}</li>;
         })}
       </ul>
     </div>

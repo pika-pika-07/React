@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 import ItemList from "./ItemList";
-const RestrauntCategory = ({ data }) => {
-  const [showItems, setShowItems] = useState(false);
+const RestrauntCategory = ({ data, showItems, setShowIndex }) => {
+  // const [showItems, setShowItems] = useState(false);
   const handleClick = () => {
-    setShowItems(!showItems);
+    setShowIndex();
   };
   return (
     <div className="w-1/2 mx-auto my-5 bg-gray-90 shadow-lg p-4 ">
