@@ -1,6 +1,9 @@
 import { CDN_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
+import { useContext } from "react";
 
 const RestrauntCard = (props) => {
+  const contextData = useContext(UserContext);
   const { resData } = props;
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } = resData;
   return (
@@ -18,6 +21,7 @@ const RestrauntCard = (props) => {
       <div className="text-sm break-words">{cuisines.join(",")}</div>
       <div>{avgRating}</div>
       <div>{costForTwo}</div>
+      <div> {contextData.loggedInUser}</div>
     </div>
   );
 };
