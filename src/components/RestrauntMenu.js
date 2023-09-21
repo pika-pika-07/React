@@ -31,9 +31,7 @@ const RestrauntMenu = () => {
       <h1 className="font-bold m-6 text-2xl"> {name}</h1>
 
       <h3> {costForTwoMessage}</h3>
-      <h3> Cuisines </h3>
       <ul className="font-bold ">{cuisines}</ul>
-      <h3> Menu </h3>
       <ul>
         {categories.map((card, index) => {
           return (
