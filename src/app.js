@@ -8,6 +8,9 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestrauntMenu from "./components/RestrauntMenu.js";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart.js";
 //import Grocery from "./components/Grocery";
 /**
  * Header
@@ -28,20 +31,21 @@ const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-      {
-        // What outlet does behind the scenes
-        // It notices the path and loads the component here according to the mapped component for that path
-        // Mapping is defined in appRouter
-        // so Outlet comnponent will be replaced by the component mapped to tha path
-        /**
-         * if path ==='/' load Body component
-         * if path === '/about' load About Component
-         * if path === '/contact' load Contact Cmponent
-         */
-        /**
+    <Provider store={appStore}>
+      <div className="app">
+        <Header />
+        <Outlet />
+        {
+          // What outlet does behind the scenes
+          // It notices the path and loads the component here according to the mapped component for that path
+          // Mapping is defined in appRouter
+          // so Outlet comnponent will be replaced by the component mapped to tha path
+          /**
+           * if path ==='/' load Body component
+           * if path === '/about' load About Component
+           * if path === '/contact' load Contact Cmponent
+           */
+          /**
          * So the final layout will look like
          * if path  === '/' Outlet will be replaced by Body
             * <Header />
@@ -54,8 +58,9 @@ const AppLayout = () => {
               <About />
       }
       {/* <Body /> */
-      }
-    </div>
+        }
+      </div>
+    </Provider>
   );
 };
 
@@ -87,6 +92,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restraunts/:resId",
         element: <RestrauntMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,
