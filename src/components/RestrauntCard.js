@@ -5,6 +5,7 @@ import { useContext } from "react";
 const RestrauntCard = (props) => {
   const contextData = useContext(UserContext);
   const { resData } = props;
+
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } = resData;
   return (
     <div
