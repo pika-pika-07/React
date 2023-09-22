@@ -24,6 +24,7 @@ const Body = () => {
     const res =
       json.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     const resInfo = res.map((res) => res.info);
+    debugger;
     setRestraunts(resInfo);
     setFilteredRestraunts(resInfo);
   };
@@ -52,10 +53,10 @@ const Body = () => {
         <div className="m-4 p-4 flex items-center">
           <button
             onClick={() => {
-              const filteredList = SampleData.filter(
-                (res) => res.avgRating > 4
+              const filteredList = filteredRestraunts.filter(
+                (res) => res.avgRating > 4.4
               );
-              setRestraunts(filteredList);
+              setFilteredRestraunts(filteredList);
             }}
             className="my-5 px-4 py-2 bg-green-200 rounded-lg"
           >
