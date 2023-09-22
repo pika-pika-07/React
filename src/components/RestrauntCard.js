@@ -9,6 +9,7 @@ const RestrauntCard = (props) => {
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } = resData;
   return (
     <div
+      data-testid="resCard"
       className="p-5 bg-[#f0f0f1] m-5 w-80 
       
       border border-solid border-black

@@ -22,9 +22,10 @@ const Body = () => {
     );
     const json = await data.json();
     const res =
-      json.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
     const resInfo = res.map((res) => res.info);
-    debugger;
+
     setRestraunts(resInfo);
     setFilteredRestraunts(resInfo);
   };
@@ -67,6 +68,7 @@ const Body = () => {
         <div className="m-4 p-4">
           <input
             type="text"
+            data-testid="searchInput"
             className="border border-solid border-black"
             value={searchText}
             onChange={onTextChange}
