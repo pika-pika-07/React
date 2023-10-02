@@ -15,7 +15,9 @@ class UserClass extends React.Component {
 
   componentWillUnmount() {}
   async componentDidMount() {
-    const data = await fetch(" https://api.github.com/users/pika-pika-07");
+    const data = await fetch(
+      "https://polar-falls-86526-4fb527053833.herokuapp.com/ https://api.github.com/users/pika-pika-07"
+    );
     const json = await data.json();
 
     console.log(json);
